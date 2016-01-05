@@ -4,6 +4,6 @@ setup(
     name = "Greengraphs",
     version = "0.1",
     packages = find_packages(exclude=['*test']),
-    scripts = ['scripts/Greengraph'],
+    scripts = ['scripts/greengraph'],
     install_requires = ['argparse']
 )
