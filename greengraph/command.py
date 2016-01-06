@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt
-from greengrapher import greengraph
+from greengrapher import Greengraph
 from argparse import ArgumentParser
 
 
@@ -13,7 +13,7 @@ def process():
 	parser.add_argument('--out','-o',help= 'Define output filename. Default: PNG',default = 'output.png')
 	arguments= parser.parse_args()
 	
-	graph = greengraph(arguments.startLoc,arguments.endLoc)
+	graph = Greengraph(arguments.startLoc,arguments.endLoc)
 	data = graph.green_between(arguments.steps)
 	
 	plt.plot(data)
