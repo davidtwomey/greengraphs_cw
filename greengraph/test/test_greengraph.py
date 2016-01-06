@@ -16,7 +16,7 @@ def test_Greengraph():
 	
 # Test Greengraph(object) class method geolocate()
 def test_geolocate_valid():
-	with open(os.path.dirname(__file__),'fixtures','sample_greengraph.yaml')) as fixture_file:
+	with open(os.path.join(os.path.dirname(__file__),'fixtures','sample_greengraph.yaml')) as fixture_file:
 		fixtures =yaml.load(fixture_file)['geolocate']
 	for fix in fixtures
 		location = fix.pop('location')

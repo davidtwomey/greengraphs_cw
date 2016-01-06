@@ -2,6 +2,8 @@ import yaml
 import os
 import numpy as np
 
+from mock import patch
+
 from ..greengraph import Greengraph
 from ..map import Map
 from nose.tools import assert_equal, assert_raises
