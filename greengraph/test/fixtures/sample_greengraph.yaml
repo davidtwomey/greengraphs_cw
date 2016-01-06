@@ -1,0 +1,10 @@
+geolocate:
+  - location: "London"
+    ans_lat: 51.5073509
+    ans_long: -0.1277583
+  - location: "Paris"
+    ans_lat: 48.856614
+    ans_long: 2.3522219
+  - location: "Madrid"
+    ans_lat: 40.4167754
+    ans_long: -3.7037902
