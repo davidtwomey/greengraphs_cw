@@ -1,0 +1,7 @@
+init:
+ - lat: "10.0"
+ - long: "10.0"
+ - url: "http://maps.googleapis.com/maps/api/staticmap?"
+ - params: "{'style': 'feature:all|element:labels|visibility:off','center': '10.0,10.0', 'zoom': 10,'maptype': 'satellite', 'sensor': 'false', 'size': '400x400'}"
+		
+  
