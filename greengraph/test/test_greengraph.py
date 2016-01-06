@@ -40,3 +40,14 @@ def test_location_sequence():
 		answer = np.vstack(answer)
 		assert(np.array_equal(return_val, answer))
 		
+def test_green_between():
+	with open(os.path.join(os.path.dirname(__file__),'fixtures','sample_greengraph.yaml')) as fixture_file:
+                fixtures = yaml.load(fixture_file)['green_between']
+	for fix in fixtures:
+		start = fix.pop('start')
+		end = fix.pop('end')
+		steps = fix.pop('steps')
+		answer = fix.pop('answer')
+		geo = Greengraph(start, end)
+		assert_equal(geo.green_between(steps), answer)
+

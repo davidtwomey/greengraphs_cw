@@ -18,3 +18,13 @@ location_sequence:
     end: "Tokyo"
     steps: 2
     answer: [[5.29789400e+01, -2.65770000e-02], [3.56894875e+01,   1.39691706e+02]]]
+
+green_between:
+  - start: 0
+    end: 0
+    steps: 1
+    answer: [89327]
+  - start: 14
+    end: 17
+    steps: 4
+    answer: [119779, 0, 9815, 0]
