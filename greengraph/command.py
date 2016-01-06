@@ -9,8 +9,8 @@ def process():
 	
 	parser.add_argument('--from', '-f', help = 'Start location', dest='startLoc')
 	parser.add_argument('--to','-t', help = 'End location', dest='endLoc')
-	parser.add_argument('--steps','-s' type= int, help = 'How many steps between locations to evaluate',default = 20)
-	parser.add.argument('--out','-o',help= 'Define output filename. Default: PNG',default = 'output.png')
+	parser.add_argument('--steps','-s', type= int, help = 'How many steps between locations to evaluate',default = 20)
+	parser.add_argument('--out','-o',help= 'Define output filename. Default: PNG',default = 'output.png')
 	arguments= parser.parse_args()
 	
 	graph = greengraph(arguments.startLoc,arguments.endLoc)
