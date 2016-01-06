@@ -5,17 +5,19 @@ from argparse import ArgumentParser
 
 
 def process():
-	parser = ArgumentParser(description = "Look for green pixels between two locations")
+	parser = ArgumentParser(description = "Evaluate green pixels between two locations")
 	
-	parser.add_argument('city_one')
-	parser.add_argument('city_two')
-	parser.add_argument('steps')
+	parser.add_argument('--from', '-f', help = 'Start location', dest='startLoc')
+	parser.add_argument('--to','-t', help = 'End location', dest='endLoc')
+	parser.add_argument('--steps','-s' type= int, help = 'How many steps between locations to evaluate',default = 20)
+	parser.add.argument('--out','-o',help= 'Define output filename. Default: PNG',default = 'output.png')
 	arguments= parser.parse_args()
 	
-	graph = greengraph(arguments.city_one,arguments.city_two)
+	graph = greengraph(arguments.startLoc,arguments.endLoc)
 	data = graph.green_between(arguments.steps)
 	
 	plt.plot(data)
+	plt.savefig(arguments.out)
 	plt.show()
 		
 if __name__ == "__main__":
