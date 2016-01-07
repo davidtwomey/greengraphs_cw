@@ -59,3 +59,8 @@ def test_green_between():
 def test_green_between_mock(mock_geolocate, mock_map):
     Greengraph('10.,10.','50.,50.').green_between(2)
     assert mock_map.call_count == 2
+
+def test_max_limit():
+    with assert_raises(RuntimeError):
+        while True:
+            Greengraph(0.0, 0.0).geolocate('Lapland')
