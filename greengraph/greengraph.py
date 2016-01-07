@@ -23,15 +23,18 @@ class Greengraph(object):
             raise ValueError("Google Maps did not recognise the placename/coordinate")  
     
     def location_sequence(self, start,end,steps):
-      """Return <steps> linearly spaced coordinates between the <start> and <end> locations."""
-      lats = np.linspace(start[0], end[0], steps)
-      longs = np.linspace(start[1],end[1], steps)
-      return np.vstack([lats, longs]).transpose()
+        """Return <steps> linearly spaced coordinates between the <start> and <end> locations."""
+        lats = np.linspace(start[0], end[0], steps)
+        longs = np.linspace(start[1],end[1], steps)
+        return np.vstack([lats, longs]).transpose()
 
     def green_between(self, steps):
-	"""Return the amount of green in each of the <steps> steps."""
-        return [Map(*location).count_green()
+        """Return the amount of green in each of the <steps> steps."""
+        if type(steps) == int:
+            return [Map(*location).count_green()
                 for location in self.location_sequence(
                     self.geolocate(self.start), 
                     self.geolocate(self.end),
                     steps)]
+        else:
+            raise ValueError("Input parameter 'steps' must be type int()")
