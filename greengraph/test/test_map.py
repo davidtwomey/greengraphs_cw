@@ -37,5 +37,16 @@ def test_green():
 			
 			geo = Map(lat, longs, satellite, zoom, size)
 			assert_equal(sum(sum(geo.green(threshold)==True)), size[0]*size[1])
-	
+
+#Test Map(object) class	method count_green()		
+def test_count_green():
+    vals = range(1,100)
+    m = Map(10.,15.)
+    for val in vals:
+        pixels = ([[0.,1.,0.]] * val) + ([[1.,1.,1.]] * (100-val))
+        pixels = np.array(pixels, dtype='float32')
+        pixels = pixels.reshape(10,10,3)
+        m.pixels = pixels
+        assert_equal(m.count_green(), val)
+	print pixels
 	
