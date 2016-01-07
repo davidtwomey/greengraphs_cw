@@ -8,16 +8,16 @@ geolocate:
   - location: "Madrid"
     ans_lat: 40.4167754
     ans_long: -3.7037902
-	
+
 location_sequence:
   - start: "Boston"
     end: "Tokyo"
     steps: 1
-    answer: [[5.29789400e+01, -2.65770000e-02]]
+    answer: [[52.978939999999987, -0.026577]]
   - start: "Boston"
     end: "Tokyo"
     steps: 2
-    answer: [[5.29789400e+01, -2.65770000e-02], [3.56894875e+01,   1.39691706e+02]]]
+    answer: [[52.978939999999987, -0.026577],[35.689487499999998,139.69170639999999]]
 
 green_between:
   - start: 0

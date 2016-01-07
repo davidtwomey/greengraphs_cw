@@ -18,10 +18,10 @@ def test_Greengraph():
 def test_geolocate_valid():
 	with open(os.path.join(os.path.dirname(__file__),'fixtures','sample_greengraph.yaml')) as fixture_file:
 		fixtures =yaml.load(fixture_file)['geolocate']
-	for fix in fixtures
+	for fix in fixtures:
 		location = fix.pop('location')
-		anslat = fix.pop('ans_lat')
-		anslong = fix.pop('ans_long')
+		ans_lat = fix.pop('ans_lat')
+		ans_long = fix.pop('ans_long')
 		answer = (ans_lat, ans_long)
 		geo = Greengraph(0.0, 0.0)
 		assert_equal(geo.geolocate(location), answer)
@@ -37,8 +37,10 @@ def test_location_sequence():
 		answer = fix.pop('answer')
 		geo = Greengraph(0.0, 0.0)
 		return_val = geo.location_sequence(geo.geolocate(start), geo.geolocate(end), steps)
-		answer = np.vstack(answer)
-		assert(np.array_equal(return_val, answer))
+		answer = np.array(answer)
+		print type(answer)
+		print type(return_val)
+		np.testing.assert_array_equal(return_val, answer)
 	
 # Test Greengraph(object) class method green_between()	
 def test_green_between():
