@@ -38,8 +38,6 @@ def test_location_sequence():
 		geo = Greengraph(0.0, 0.0)
 		return_val = geo.location_sequence(geo.geolocate(start), geo.geolocate(end), steps)
 		answer = np.array(answer)
-		print type(answer)
-		print type(return_val)
 		np.testing.assert_array_equal(return_val, answer)
 	
 # Test Greengraph(object) class method green_between()	
