@@ -41,12 +41,31 @@ def test_green():
 #Test Map(object) class	method count_green()		
 def test_count_green():
     vals = range(1,100)
-    m = Map(10.,15.)
+    m = Map(20.,15.)
     for val in vals:
         pixels = ([[0.,1.,0.]] * val) + ([[1.,1.,1.]] * (100-val))
         pixels = np.array(pixels, dtype='float32')
         pixels = pixels.reshape(10,10,3)
         m.pixels = pixels
         assert_equal(m.count_green(), val)
-	print pixels
-	
+
+#Test Map(object) class method show_green()
+@patch('matplotlib.image.imsave')
+def test_show_green(mock_imsave):
+    vals = range(1,100)
+    m = Map(13.,22.)
+    for val in vals:
+        pixels = ([[0,1,0]] * val) + ([[0,0,0]] * (100-val))
+        pixels = np.array(pixels)
+        pixels = pixels.reshape(10,10,3)
+        m.pixels = pixels
+        m.show_green()
+        assert np.array_equal(mock_imsave.call_args[0][1],pixels)
+    assert_equal(mock_imsave.call_args[1], {'format':'png'})
+
+
+
+
+
+
+
