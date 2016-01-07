@@ -2,6 +2,8 @@ import yaml
 import os
 import numpy as np
 
+from mock import patch
+
 from ..greengraph import Greengraph
 from nose.tools import assert_raises, assert_equal, assert_almost_equal
 
@@ -52,3 +54,8 @@ def test_green_between():
 		geo = Greengraph(start, end)
 		assert_equal(geo.green_between(steps), answer)
 
+@patch('greengraph.map.Map.count_green')
+@patch('greengraph.greengraph.Greengraph.geolocate',return_value = (50.,10.))
+def test_green_between_mock(mock_geolocate, mock_map):
+    Greengraph('10.,10.','50.,50.').green_between(2)
+    assert mock_map.call_count == 2
