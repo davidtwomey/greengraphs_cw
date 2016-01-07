@@ -9,16 +9,33 @@ from ..map import Map
 from nose.tools import assert_equal, assert_raises
 
 # Test Map(object) class initialisation
-
 @patch('requests.get')
 @patch('matplotlib.image.imread')
 def test_map(mock_imread,mock_get):
 	with open(os.path.join(os.path.dirname(__file__),'fixtures','sample_map.yaml')) as fixture_file:
 		fixtures = yaml.load(fixture_file)['init']
-	for fix in fixtures:
-		lat = fix.pop('lat')
-		long = fix.pop('long')
-		url = fix.pop('url')
-		map = Map(lat,long)
-		param = fix.pop('params')
-		mock_get.assert_called_with(url,params=param)
+		for fix in fixtures:
+			lat = fix.pop('lat')
+			long = fix.pop('long')
+			url = fix.pop('url')
+			map = Map(lat,long)
+			param = fix.pop('params')
+			mock_get.assert_called_with(url,params=param)
+
+#Test Map(object) class method green()		
+def test_green():
+	with open(os.path.join(os.path.dirname(__file__),'fixtures','sample_map.yaml')) as fixtures_file:
+		fixtures = yaml.load(fixtures_file)['green']
+		for fixture in fixtures:
+			lat = fixture.pop('lat')
+			longs = fixture.pop('longs')
+			satellite = fixture.pop('satellite')
+			zoom = fixture.pop('zoom')
+			size = tuple(fixture.pop('size'))
+			threshold = fixture.pop('threshold')
+			answer = fixture.pop('answer')
+			
+			geo = Map(lat, longs, satellite, zoom, size)
+			assert_equal(sum(sum(geo.green(threshold)==True)), size[0]*size[1])
+	
+	

@@ -3,3 +3,12 @@ init:
    long: 10.0
    url: "http://maps.googleapis.com/maps/api/staticmap?"
    params: {'style': 'feature:all|element:labels|visibility:off','center': '10.0,10.0', 'zoom': 10,'maptype': 'satellite', 'sensor': 'false', 'size': '400x400'}
+
+green:
+ - lat: 51.5073509
+   longs: -0.1277583
+   satellite: True
+   zoom: 10
+   size: [2, 2] 
+   threshold: 0
+   answer: True
