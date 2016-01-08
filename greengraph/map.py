@@ -5,6 +5,7 @@ import requests
 
 class Map(object):
     def __init__(self, lat, long, satellite=True, zoom=10, size=(400,400), sensor=False):
+        """Initialise map object with a <lat> and <long> latitude/longitude coordinates."""
         base="http://maps.googleapis.com/maps/api/staticmap?"
   
         params=dict(
@@ -22,6 +23,7 @@ class Map(object):
         self.pixels= img.imread(StringIO(self.image)) # Parse our PNG image as a numpy array
         
     def green(self, threshold):
+        """Parse our PNG image as a numpy array"""
         # Use NumPy to build an element-by-element logical array
         greener_than_red = self.pixels[:,:,1] > threshold* self.pixels[:,:,0]
         greener_than_blue = self.pixels[:,:,1] > threshold*self.pixels[:,:,2]
@@ -29,9 +31,11 @@ class Map(object):
         return green
     
     def count_green(self, threshold = 1.1):
+        """Count the number of green pixels in an array"""
         return np.sum(self.green(threshold))
     
     def show_green(self, threshold = 1.1):
+        """Save image in PNG format"""
         green = self.green(threshold)
         out = green[:,:,np.newaxis]*np.array([0,1,0])[np.newaxis,np.newaxis,:]
         buffer = StringIO()
