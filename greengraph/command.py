@@ -8,7 +8,7 @@ parser = ArgumentParser(description = "Evaluate green pixels between two locatio
 parser.add_argument('--from', '-f', help = 'Start location', dest='startLoc')
 parser.add_argument('--to','-t', help = 'End location', dest='endLoc')
 parser.add_argument('--steps','-s', type= int, help = 'How many steps between locations to evaluate',default = 20)
-parser.add_argument('--out','-o',help= 'Define output filename. Default: PNG',default = 'output.png', dest='out')
+parser.add_argument('--out','-o',help= 'Define output filename. Type: PNG',default = 'output', dest='out')
 
 
 def process():
@@ -17,7 +17,7 @@ def process():
 	data = graph.green_between(arguments.steps)
 	
 	plt.plot(data)
-	plt.savefig(arguments.out)
+	plt.savefig(arguments.out+'.png')
 	plt.show()
 		
 if __name__ == "__main__":
