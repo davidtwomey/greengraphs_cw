@@ -11,14 +11,15 @@ parser.add_argument('--steps','-s', type= int, help = 'How many steps between lo
 parser.add_argument('--out','-o',help= 'Define output filename. Type: PNG',default = 'output', dest='out')
 
 
+
 def process():
-	arguments= parser.parse_args()
-	graph = Greengraph(arguments.startLoc,arguments.endLoc)
-	data = graph.green_between(arguments.steps)
+    arguments= parser.parse_args()
+    graph = Greengraph(arguments.startLoc,arguments.endLoc)
+    data = graph.green_between(arguments.steps)
 	
-	plt.plot(data)
-	plt.savefig(arguments.out+'.png')
-	plt.show()
+    plt.plot(data)
+    plt.savefig(arguments.out+'.png')
+    plt.show()
 		
 if __name__ == "__main__":
 	process()
