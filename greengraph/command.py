@@ -21,8 +21,8 @@ def process():
     # Labelling of plot 
     plt.xlabel("Step")
     plt.ylabel("Number of green pixels (Max 160000)")
-    plt.title("Graph of green pixels in geographical images between"+
-              " ".join(arguments.startLoc)+ "and" + " ".join(arguments.endLoc))
+    plt.title("Green pixels in geographical images between "+
+              "".join(arguments.startLoc)+ " and " + "".join(arguments.endLoc))
     plt.savefig(arguments.out+'.png')
     plt.show()
 		
