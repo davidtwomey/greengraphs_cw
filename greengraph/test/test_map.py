@@ -66,13 +66,13 @@ def test_count_green(mock_imread,mock_get):
 @patch('matplotlib.image.imread')
 @patch('matplotlib.image.imsave')
 def test_show_green(mock_imsave,mock_imread,mock_get):
-    MockMap = Map(20.123,15.123)
+    mock_map = Map(20.123,15.123)
     for px in range(1,100): 
         pixels = ([[0,1,0]] * px) + ([[0,0,0]] * (100-px))
         pixels = np.array(pixels)
         pixels = pixels.reshape(10,10,3)
-        MockMap.pixels = pixels
-        MockMap.show_green()
+        mock_map.pixels = pixels
+        mock_map.show_green()
         assert np.array_equal(mock_imsave.call_args[0][1],pixels)
     assert_equal(mock_imsave.call_args[1], {'format':'png'})
 
