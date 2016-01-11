@@ -1,13 +1,12 @@
 import yaml
 import os
 import numpy as np
-import mock
 import requests
 
 from ..greengraph import Greengraph
 from ..map import Map
 from nose.tools import assert_equal, assert_false, assert_raises
-
+from mock import patch
 
 # Test Map(object) class initialisation
 @patch('requests.get')
