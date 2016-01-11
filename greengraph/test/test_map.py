@@ -12,15 +12,25 @@ from mock import patch
 @patch('requests.get')
 @patch('matplotlib.image.imread')
 def test_map(mock_imread,mock_get):
-	with open(os.path.join(os.path.dirname(__file__),'fixtures','sample_map.yaml')) as fixture_file:
-		fixtures = yaml.load(fixture_file)['init']
-		for fix in fixtures:
-			lat = fix.pop('lat')
-			long = fix.pop('long')
-			url = fix.pop('url')
-			map = Map(lat,long)
-			param = fix.pop('params')
-			mock_get.assert_called_with(url,params=param)
+    with open(os.path.join(os.path.dirname(__file__),'fixtures','sample_map.yaml')) as fixture_file:
+        fixtures = yaml.load(fixture_file)['init']
+        for fix in fixtures:
+            lat = fix.pop('lat')
+            long = fix.pop('long')
+            url = fix.pop('url')
+            test = fix.pop('test')
+            if (test == 'satellite'):
+                map = Map(lat,long,satellite= False)
+            elif (test == 'sensor'): 
+                map = Map(lat,long,sensor = True)
+            elif (test == 'size'):
+                map = Map(lat,long,size = (150,300))
+            elif (test == 'zoom'):
+                map = Map(lat,long,zoom = 20)
+            else:
+                map = Map(lat,long)
+            param = fix.pop('params')
+            mock_get.assert_called_with(url,params=param)
 
 #Test Map(object) class method green()	
 @patch('requests.get')

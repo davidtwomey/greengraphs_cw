@@ -1,9 +1,59 @@
 init:
- - lat: 10.0
+ - test: "default"
+   lat: 10.0
    long: 10.0
    url: "http://maps.googleapis.com/maps/api/staticmap?"
-   params: {'style': 'feature:all|element:labels|visibility:off','center': '10.0,10.0', 'zoom': 10,'maptype': 'satellite', 'sensor': 'false', 'size': '400x400'}
-
+   params: {'style': 
+                   'feature:all|element:labels|visibility:off',
+                   'center': '10.0,10.0', 
+                   'zoom': 10,
+                   'maptype': 'satellite', 
+                   'sensor': 'false', 
+                   'size': '400x400'}
+ - test: "satellite"
+   lat: 51.0
+   long: 17.0
+   url: "http://maps.googleapis.com/maps/api/staticmap?"
+   params: {'style': 
+                   'feature:all|element:labels|visibility:off',
+                   'center': '51.0,17.0', 
+                   'zoom': 10,
+                   'sensor': 'false', 
+                   'size': '400x400'}
+ - test: "sensor"
+   lat: 10.0
+   long: 10.0
+   url: "http://maps.googleapis.com/maps/api/staticmap?"
+   params: {'style': 
+                   'feature:all|element:labels|visibility:off',
+                   'center': '10.0,10.0', 
+                   'zoom': 10,
+                   'maptype': 'satellite', 
+                   'sensor': 'true', 
+                   'size': '400x400'}
+ - test: "size"
+   lat: 10.0
+   long: 10.0
+   url: "http://maps.googleapis.com/maps/api/staticmap?"
+   params: {'style': 
+                   'feature:all|element:labels|visibility:off',
+                   'center': '10.0,10.0', 
+                   'zoom': 10,
+                   'maptype': 'satellite', 
+                   'sensor': 'false', 
+                   'size': '150x300'}
+ - test: "zoom"
+   lat: 10.0
+   long: 10.0
+   url: "http://maps.googleapis.com/maps/api/staticmap?"
+   params: {'style': 
+                   'feature:all|element:labels|visibility:off',
+                   'center': '10.0,10.0', 
+                   'zoom': 20,
+                   'maptype': 'satellite', 
+                   'sensor': 'false', 
+                   'size': '400x400'}                   
+    
 test_green: 
  - pixel_colour: "green"
    threshold: 1.1
