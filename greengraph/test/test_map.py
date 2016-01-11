@@ -1,12 +1,8 @@
 import yaml
 import os
 import numpy as np
-import StringIO
 import mock
 import requests
-
-from mock import patch
-from matplotlib import image as im
 
 from ..greengraph import Greengraph
 from ..map import Map
@@ -67,9 +63,6 @@ def test_count_green(mock_imread,mock_get):
         assert_equal(mock_map.count_green(), px)
 
 #Test Map(object) class method show_green()
-#@mock.patch.object(requests,'get')
-#@mock.patch.object(im,'imread')
-#@mock.patch.object(im,'imsave')
 @patch('requests.get')
 @patch('matplotlib.image.imread')
 @patch('matplotlib.image.imsave')
